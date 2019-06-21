@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const postcssCustomProperties = require('postcss-custom-properties');
 
 module.exports = {
   entry: './config/main.js',
@@ -26,24 +25,14 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader', // translates CSS into CommonJS
+            loader: 'css-loader',
             options: {
               url: false,
-              sourceMaps: true,
               importLoaders: 1,
-              minimize: true,
             },
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [postcssCustomProperties()],
-            },
-          },
-          {
-            loader: 'sass-loader', // compiles Sass to CSS
-          },
+          'postcss-loader',
+          'sass-loader',
         ],
       },
     ],

@@ -1,6 +1,6 @@
 module.exports = {
-   plugins: [
-    require('postcss-flexbugs-fixes'),
-    require('cssnano'),
-  ]
-};
+  plugins: {
+    'postcss-preset-env': {},
+    'cssnano': {}
+  }
+}

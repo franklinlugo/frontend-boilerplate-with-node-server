@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const postcssCustomProperties = require('postcss-custom-properties');
 
 module.exports = {
   mode: 'development',
@@ -27,28 +26,17 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
+          { loader: 'style-loader', options: { sourceMap: true } },
           {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader', // translates CSS into CommonJS
+            loader: 'css-loader',
             options: {
               url: false,
-              sourceMaps: true,
+              sourceMap: true,
               importLoaders: 1,
-              minimize: true,
             },
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [postcssCustomProperties()],
-            },
-          },
-          {
-            loader: 'sass-loader', // compiles Sass to CSS
-          },
+          { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
     ],
