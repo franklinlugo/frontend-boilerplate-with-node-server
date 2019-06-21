@@ -1,7 +1,6 @@
 module.exports = {
-    plugins: {
-        'postcss-cssnext': {},
-        'postcss-flexbugs-fixes': {},
-        'cssnano': {},
-    },
+   plugins: [
+    require('postcss-flexbugs-fixes'),
+    require('cssnano'),
+  ]
 };
